@@ -70,4 +70,119 @@ router.post("/test-post-4", function(req, res) {
     res.send(  { msg: arr , status: true }  )
 })
 
+
+
+router.get('/sol1', function (req, res) {
+    // let movies2 = ['Forrest Gump','Shawshank redemption','pursuit of happyness','Good will Hunting']
+    let arr = [1,2,3,5,6,7]
+    let sum=0
+        for(let i=0;i<arr.length;i++){
+            
+            sum=sum+arr[i]
+        }
+    
+        let number= arr.pop()
+        let missingNumber=((number*(number+1))/2)-sum
+        res.send({data:missingNumber})
+        
+
+        
+    
+     console.log('The request objects is '+ JSON.stringify(req.params))
+    //  res.send(result)
+        // res.send(films)
+    
+
+});
+
+
+router.get('/sol2', function (req, res) {
+    // let movies2 = ['Forrest Gump','Shawshank redemption','pursuit of happyness','Good will Hunting']
+    let arr = [33,34,35,37,38]
+    let sum=0
+    let a = arr.length
+        for(let i=0;i<arr.length;i++){
+            
+            sum=sum+arr[i]
+        }
+        // res.send({data: sum})
+    
+        let lastNumber= arr.pop()
+        let firstNumber=arr[0]
+        
+        console.log(a)
+        let b= lastNumber+firstNumber
+        let missingNumber= (((a+1)*b)/2) - sum
+        res.send({data:missingNumber})
+        
+
+        
+    
+    //  console.log('The request objects is '+ JSON.stringify(req.params))
+    //  res.send(result)
+        // res.send(films)
+    
+
+});
+
+let players=[
+    {
+        "name": "manish",
+        "dob": "1/1/1995",
+        "gender": "male",
+        "city": "jalandhar",
+        "sports": [
+        "swimming"
+        ]
+        },
+        {
+            "name": "gopal",
+            "dob": "1/09/1995",
+            "gender": "male",
+            "city": "delhi",
+            "sports": [
+            "soccer"
+            ]
+            },
+            {
+                "name": "lokesh",
+                "dob": "1/1/1990",
+                "gender": "male",
+                "city": "mumbai",
+                "sports": [
+                "soccer"
+                ]
+                }
+                                    
+]
+
+
+
+router.post('/player', function (req, res) {
+    
+    let ele=req.body
+    let count =0
+    for(let i=0;i<players.length;i++){
+    if(players[i].name===req.body.name){
+    count ++
+    break
+    }
+    }
+    
+    if(count===0){
+    players.push(ele)
+    }
+    res.send({msg:players})
+    
+});
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
