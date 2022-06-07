@@ -1,4 +1,5 @@
 const express = require('express');
+const { route } = require('express/lib/application');
 const router = express.Router();
 // const UserModel= require("../models/userModel.js")
 // const UserController= require("../controllers/userController")
@@ -12,17 +13,28 @@ const BookController= require("../controllers/bookController")
 
 
 
+router.post("/createAuthor", BookController.createAuthor  )
+
 router.post("/createBook", BookController.createBook  )
 
 router.get("/bookList", BookController.bookList  )
 
-router.get("/getXINRBooks", BookController.getXINRBooks)
+router.get("/getAuthor", BookController.getAuthor)
 
-router.get("/getRandomBooks", BookController.getRandomBooks)
+router.get("/getCost", BookController.getCost)
 
-router.post("/getBooksInYear", BookController.getBooksInYear)
 
-router.post("/getParticularBooks", BookController.getParticularBooks)
+// router.post("/createBook", BookController.createBook  )
+
+// router.get("/bookList", BookController.bookList  )
+
+// router.get("/getXINRBooks", BookController.getXINRBooks)
+
+// router.get("/getRandomBooks", BookController.getRandomBooks)
+
+// router.post("/getBooksInYear", BookController.getBooksInYear)
+
+// router.post("/getParticularBooks", BookController.getParticularBooks)
 
 
 
