@@ -28,16 +28,18 @@ const getAuthor = async function(req,res){
     res.send({msg : result})
 }
 
-// const getCost = async function(req,res){
-//     let data = await BooksModel.find({price:{$gte:50,$lte:100}}).select({author_id:1})
-    // let result= await AuthorsModel.find({author_id:data[0].author_id}).select({author_name :1})
-    // res.send({msg: result})
-//     for(let i=0;i<data.length;i++){
-//         let result=[]
-//        result= await AuthorsModel.find({author_id:data[i].author_id}).select({author_name :1})
-//         res.send({msg: [result]}) 
-//     }
-// }
+const getCost = async function(req,res){
+    let data = await BooksModel.find({price:{$gte:50,$lte:100}}).select({author_id:1})
+    let result= await data.map(x=>x.author_id)
+    let temp=[]
+    for(let i=0;i<result.length;i++){
+        const a = result[i]
+       const b= await AuthorsModel.find({author_id:a}).select({author_name :1})
+       temp.push(b)
+    }
+    const name=temp
+    res.send({msg:name})
+}
 
 
 
