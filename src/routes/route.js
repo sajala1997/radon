@@ -23,6 +23,9 @@ router.get("/getAuthor", BookController.getAuthor)
 
 router.get("/getCost", BookController.getCost)
 
+router.get("/books_by_authorid/:id", BookController.books_by_authorid)
+
+router.get("/get_authors_by_age", BookController.get_authors_by_age)
 
 // router.post("/createBook", BookController.createBook  )
 
