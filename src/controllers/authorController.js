@@ -11,5 +11,12 @@ const getAuthorsData= async function (req, res) {
     res.send({data: authors})
 }
 
+
+const createUser= async function(req,res){
+    console.log("congrats reached handler")
+    res.send("coming from handler")
+}
+
 module.exports.createAuthor= createAuthor
 module.exports.getAuthorsData= getAuthorsData
+module.exports.createUser=createUser
