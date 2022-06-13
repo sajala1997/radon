@@ -2,6 +2,7 @@
 const UserNew =require("../models/userNew")
 const ProductNew= require("../models/productNew")
 const OrderNew = require("../models/orderNew")
+const orderNew = require("../models/orderNew")
 
 
 
@@ -25,17 +26,28 @@ const createUser = async function(req,res,next){
 }
 
 const createOrder =async function(req,res,next){
+    
     const head=req.headers.isfreeappuser 
     if(!head)
     res.send("error")
     else{
-    let data = req.body
-    if(data.productId){
-
+    const data = req.body
+    if(!data.productId){
+        res.send("product id is required")
     }
+    let product= await OrderNew.findById(data.productId)
+    if(!product)
+    res.send("wrong product id")
+    if(!data.userId)
+    res.send("user id is required")
+    let user= await OrderNew.findById(data.userId)
+    if(!user)
+    res.send("wrong user id")
+    }
+
     let saveData= await OrderNew.create(data)
     res.send({msg:saveData})
-    }
+    
 }
 
 
